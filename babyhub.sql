@@ -147,10 +147,10 @@ INSERT INTO `t02baby` VALUES (3, '10456023@ntub.edu.tw', '嬌嬌', '2018-10-30',
 INSERT INTO `t02baby` VALUES (4, '10456048@ntub.edu.tw', '羊佳', '2018-10-31', '女孩');
 
 -- ----------------------------
--- Table structure for t03growingrecord
+-- Table structure for t03growing_Record
 -- ----------------------------
-DROP TABLE IF EXISTS `t03growingrecord`;
-CREATE TABLE `t03growingrecord`  (
+DROP TABLE IF EXISTS `t03growing_Record`;
+CREATE TABLE `t03growing_Record`  (
   `serNo` int(50) NOT NULL AUTO_INCREMENT COMMENT 'AI',
   `babyNo` int(50) NOT NULL COMMENT 'T02',
   `recordDateTime` datetime(0) NOT NULL,
@@ -162,16 +162,16 @@ CREATE TABLE `t03growingrecord`  (
   INDEX `babyNo_2`(`babyNo`) USING BTREE,
   INDEX `babyNo_3`(`babyNo`) USING BTREE,
   INDEX `babyNo_4`(`babyNo`) USING BTREE,
-  CONSTRAINT `t03growingrecord_ibfk_1` FOREIGN KEY (`babyNo`) REFERENCES `t02baby` (`babyno`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `t03growing_Record_ibfk_1` FOREIGN KEY (`babyNo`) REFERENCES `t02baby` (`babyno`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of t03growingrecord
+-- Records of t03growing_Record
 -- ----------------------------
-INSERT INTO `t03growingrecord` VALUES (1, 1, '2018-09-25 11:54:55', 55, 4000, 500);
-INSERT INTO `t03growingrecord` VALUES (2, 2, '2018-10-29 11:57:11', 52, 3600, 600);
-INSERT INTO `t03growingrecord` VALUES (3, 3, '2018-10-29 11:57:55', 60, 5000, 1000);
-INSERT INTO `t03growingrecord` VALUES (4, 4, '2018-10-29 11:58:03', 56, 4300, 700);
+INSERT INTO `t03growing_Record` VALUES (1, 1, '2018-09-25 11:54:55', 55, 4000, 500);
+INSERT INTO `t03growing_Record` VALUES (2, 2, '2018-10-29 11:57:11', 52, 3600, 600);
+INSERT INTO `t03growing_Record` VALUES (3, 3, '2018-10-29 11:57:55', 60, 5000, 1000);
+INSERT INTO `t03growing_Record` VALUES (4, 4, '2018-10-29 11:58:03', 56, 4300, 700);
 
 -- ----------------------------
 -- Table structure for t04forum
@@ -212,7 +212,7 @@ CREATE TABLE `t04forum`  (
   INDEX `forumNo_10`(`forumNo`) USING BTREE,
   INDEX `forumNo_11`(`forumNo`) USING BTREE,
   CONSTRAINT `t04forum_ibfk_1` FOREIGN KEY (`id`) REFERENCES `t01member` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `t04forum_ibfk_2` FOREIGN KEY (`typeNo`) REFERENCES `t15forumType` (`typeno`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `t04forum_ibfk_2` FOREIGN KEY (`typeNo`) REFERENCES `t15forum_Type` (`typeno`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -224,10 +224,10 @@ INSERT INTO `t04forum` VALUES (3, 7, '10456023@ntub.edu.tw', '2018-10-29 12:16:5
 INSERT INTO `t04forum` VALUES (4, 9, '10456048@ntub.edu.tw', '2018-10-29 12:18:18', '偉大的媽媽辛苦生完之後,在醫院的前三天還算是天堂,寳寳有護士們幫忙打理和照顧,\r\n\r\n寳寳餓了會幫忙推過來餵,還沒母奶的媽咪也沒關係,護士會幫忙餵配方奶。\r\n\r\n若是寳寳哭了,護士會在育嬰室幫忙安撫寳寳,然後每天還會幫寳寳洗澡做臍帶護理~\r\n\r\n如果媽媽乳線塞住了,還可以詢問護士如何解決,護士還會教你按摩跟其他衛教知識\r\n\r\n但這所有一切的一切,等出院後,通通要自己面對了');
 
 -- ----------------------------
--- Table structure for t05forum comment
+-- Table structure for t05forum_Comment
 -- ----------------------------
-DROP TABLE IF EXISTS `t05forum comment`;
-CREATE TABLE `t05forum comment`  (
+DROP TABLE IF EXISTS `t05forum_Comment`;
+CREATE TABLE `t05forum_Comment`  (
   `serNo` int(50) NOT NULL AUTO_INCREMENT COMMENT 'AI',
   `forumNo` int(50) NOT NULL COMMENT 'T04',
   `id` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'T01',
@@ -237,24 +237,24 @@ CREATE TABLE `t05forum comment`  (
   INDEX `forumNo`(`forumNo`) USING BTREE,
   INDEX `forumNo_2`(`forumNo`) USING BTREE,
   INDEX `memNo`(`id`) USING BTREE,
-  CONSTRAINT `t05forum comment_ibfk_1` FOREIGN KEY (`forumNo`) REFERENCES `t04forum` (`forumno`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `t05forum comment_ibfk_2` FOREIGN KEY (`id`) REFERENCES `t01member` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `t05forum_Comment_ibfk_1` FOREIGN KEY (`forumNo`) REFERENCES `t04forum` (`forumno`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `t05forum_Comment_ibfk_2` FOREIGN KEY (`id`) REFERENCES `t01member` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of t05forum comment
+-- Records of t05forum_Comment
 -- ----------------------------
-INSERT INTO `t05forum comment` VALUES (1, 1, '10456004@ntub.edu.tw', '2018-10-26 12:05:00', '我覺得這篇很讚');
-INSERT INTO `t05forum comment` VALUES (2, 2, '10456004@ntub.edu.tw', '2018-10-27 15:15:00', '謝謝大大無私地分享');
-INSERT INTO `t05forum comment` VALUES (3, 2, '10456005@ntub.edu.tw', '2018-10-28 18:05:00', '當媽媽真的很辛苦');
-INSERT INTO `t05forum comment` VALUES (4, 3, '10456023@ntub.edu.tw', '2018-10-29 20:05:00', '這我認同');
-INSERT INTO `t05forum comment` VALUES (5, 3, '10456048@ntub.edu.tw', '2018-10-30 00:05:00', '哈哈哈哈哈哈');
+INSERT INTO `t05forum_Comment` VALUES (1, 1, '10456004@ntub.edu.tw', '2018-10-26 12:05:00', '我覺得這篇很讚');
+INSERT INTO `t05forum_Comment` VALUES (2, 2, '10456004@ntub.edu.tw', '2018-10-27 15:15:00', '謝謝大大無私地分享');
+INSERT INTO `t05forum_Comment` VALUES (3, 2, '10456005@ntub.edu.tw', '2018-10-28 18:05:00', '當媽媽真的很辛苦');
+INSERT INTO `t05forum_Comment` VALUES (4, 3, '10456023@ntub.edu.tw', '2018-10-29 20:05:00', '這我認同');
+INSERT INTO `t05forum_Comment` VALUES (5, 3, '10456048@ntub.edu.tw', '2018-10-30 00:05:00', '哈哈哈哈哈哈');
 
 -- ----------------------------
--- Table structure for t06pregnancyKnowledge
+-- Table structure for t06pregnancy_Knowledge
 -- ----------------------------
-DROP TABLE IF EXISTS `t06pregnancyKnowledge`;
-CREATE TABLE `t06pregnancyKnowledge`  (
+DROP TABLE IF EXISTS `t06pregnancy_Knowledge`;
+CREATE TABLE `t06pregnancy_Knowledge`  (
   `serNo` int(50) NOT NULL AUTO_INCREMENT COMMENT 'AI',
   `managerNo` char(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'T12',
   `title` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -262,23 +262,23 @@ CREATE TABLE `t06pregnancyKnowledge`  (
   `source` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL,
   PRIMARY KEY (`serNo`) USING BTREE,
   INDEX `managerNo`(`managerNo`) USING BTREE,
-  CONSTRAINT `t06pregnancyKnowledge_ibfk_1` FOREIGN KEY (`managerNo`) REFERENCES `t12manager` (`managerno`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `t06pregnancy_Knowledge_ibfk_1` FOREIGN KEY (`managerNo`) REFERENCES `t12manager` (`managerno`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of t06pregnancyKnowledge
+-- Records of t06pregnancy_Knowledge
 -- ----------------------------
-INSERT INTO `t06pregnancyKnowledge` VALUES (1, 'J0903', '大唱喜歡的歌', '唱歌會使整個人放鬆。哼歌或是到卡拉OK唱歌都能改善心情，消除緊張。媽媽放鬆，寶寶自然會樂得自在了。', NULL);
-INSERT INTO `t06pregnancyKnowledge` VALUES (2, 'H1022', '能放鬆的運動', '散步是最能讓人放鬆的運動。在天氣好，空氣清新的時候散步不只是一種享受，還能讓肚裡的寶寶享受太陽浴和輕微震盪帶來的按摩效果，他會和你一樣心情愉快的！', NULL);
-INSERT INTO `t06pregnancyKnowledge` VALUES (3, 'V0124', '自己喜歡的事', '懷孕期間要經常投自己所好，做自己喜歡做的事也是最好的放鬆方式，媽媽心情愉悅，通過胎盤和臍帶輸送給胎兒的血液和氧氣就會格外地充足，寶寶也會感應得到。', NULL);
-INSERT INTO `t06pregnancyKnowledge` VALUES (4, 'L0816', '讀書給寶寶聽', '和胎兒的交流非常有趣，唱唱歌、說說話、讀讀圖畫書等。按照發音順序一個字一個字地讀給他聽，把又有文字又有圖畫的頁面指給他看，跟肚裡的寶寶進行交流。媽媽的聲音給肚裡寶寶帶來的聲音刺激能使胎兒心情舒暢。', NULL);
-INSERT INTO `t06pregnancyKnowledge` VALUES (5, 'L0816', '保護自己牙齒', '懷孕期間受激素分泌的影響，牙齦充血腫脹，容易引發牙周炎等。這些口腔疾患會引發牙齦出血、牙痛和發熱等症狀，影響孕婦進食及營養攝入，從而影響胎兒生長發育。', NULL);
+INSERT INTO `t06pregnancy_Knowledge` VALUES (1, 'J0903', '大唱喜歡的歌', '唱歌會使整個人放鬆。哼歌或是到卡拉OK唱歌都能改善心情，消除緊張。媽媽放鬆，寶寶自然會樂得自在了。', NULL);
+INSERT INTO `t06pregnancy_Knowledge` VALUES (2, 'H1022', '能放鬆的運動', '散步是最能讓人放鬆的運動。在天氣好，空氣清新的時候散步不只是一種享受，還能讓肚裡的寶寶享受太陽浴和輕微震盪帶來的按摩效果，他會和你一樣心情愉快的！', NULL);
+INSERT INTO `t06pregnancy_Knowledge` VALUES (3, 'V0124', '自己喜歡的事', '懷孕期間要經常投自己所好，做自己喜歡做的事也是最好的放鬆方式，媽媽心情愉悅，通過胎盤和臍帶輸送給胎兒的血液和氧氣就會格外地充足，寶寶也會感應得到。', NULL);
+INSERT INTO `t06pregnancy_Knowledge` VALUES (4, 'L0816', '讀書給寶寶聽', '和胎兒的交流非常有趣，唱唱歌、說說話、讀讀圖畫書等。按照發音順序一個字一個字地讀給他聽，把又有文字又有圖畫的頁面指給他看，跟肚裡的寶寶進行交流。媽媽的聲音給肚裡寶寶帶來的聲音刺激能使胎兒心情舒暢。', NULL);
+INSERT INTO `t06pregnancy_Knowledge` VALUES (5, 'L0816', '保護自己牙齒', '懷孕期間受激素分泌的影響，牙齦充血腫脹，容易引發牙周炎等。這些口腔疾患會引發牙齦出血、牙痛和發熱等症狀，影響孕婦進食及營養攝入，從而影響胎兒生長發育。', NULL);
 
 -- ----------------------------
--- Table structure for t07vaccine
+-- Table structure for T07vaccination
 -- ----------------------------
-DROP TABLE IF EXISTS `t07vaccine`;
-CREATE TABLE `t07vaccine`  (
+DROP TABLE IF EXISTS `T07vaccination`;
+CREATE TABLE `T07vaccination`  (
   `serNo` int(50) NOT NULL AUTO_INCREMENT COMMENT 'AI',
   `babyNo` int(50) NOT NULL COMMENT 'T02',
   `vacNo` int(50) NOT NULL COMMENT 'T13',
@@ -289,98 +289,98 @@ CREATE TABLE `t07vaccine`  (
   INDEX `babyNo`(`babyNo`) USING BTREE,
   INDEX `babyNo_2`(`babyNo`) USING BTREE,
   INDEX `babyNo_3`(`babyNo`) USING BTREE,
-  INDEX `t07vaccine_ibfk_1`(`vacNo`) USING BTREE,
-  CONSTRAINT `t07vaccine_ibfk_1` FOREIGN KEY (`vacNo`) REFERENCES `t13vaccine` (`vacno`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `t07vaccine_ibfk_2` FOREIGN KEY (`babyNo`) REFERENCES `t02baby` (`babyno`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `T07vaccination_ibfk_1`(`vacNo`) USING BTREE,
+  CONSTRAINT `T07vaccination_ibfk_1` FOREIGN KEY (`vacNo`) REFERENCES `t13vaccine` (`vacno`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `T07vaccination_ibfk_2` FOREIGN KEY (`babyNo`) REFERENCES `t02baby` (`babyno`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of t07vaccine
+-- Records of T07vaccination
 -- ----------------------------
-INSERT INTO `t07vaccine` VALUES (1, 1, 1, '已接種', '馬偕醫院', '2018-09-26');
-INSERT INTO `t07vaccine` VALUES (2, 1, 2, '已接種', '馬偕醫院', '2018-10-26');
-INSERT INTO `t07vaccine` VALUES (3, 1, 3, '已接種', '臺大醫院', '2018-10-27');
-INSERT INTO `t07vaccine` VALUES (4, 1, 4, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (5, 1, 5, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (6, 1, 6, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (7, 1, 7, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (8, 1, 8, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (9, 1, 9, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (10, 1, 10, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (11, 1, 11, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (12, 1, 12, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (13, 1, 13, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (14, 1, 14, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (15, 1, 15, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (16, 1, 16, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (17, 1, 17, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (18, 1, 18, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (19, 1, 19, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (20, 1, 20, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (21, 1, 21, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (22, 2, 1, '已接種', '榮總醫院', '2018-09-27');
-INSERT INTO `t07vaccine` VALUES (23, 2, 2, '已接種', '榮總醫院', '2018-10-27');
-INSERT INTO `t07vaccine` VALUES (24, 2, 3, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (25, 2, 4, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (26, 2, 5, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (27, 2, 6, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (28, 2, 7, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (29, 2, 8, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (30, 2, 9, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (31, 2, 10, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (32, 2, 11, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (33, 2, 12, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (34, 2, 13, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (35, 2, 14, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (36, 2, 15, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (37, 2, 16, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (38, 2, 17, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (39, 2, 18, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (40, 2, 19, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (41, 2, 20, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (42, 2, 21, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (43, 3, 1, '已接種', '榮總醫院', '2018-10-30');
-INSERT INTO `t07vaccine` VALUES (44, 3, 2, '已接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (45, 3, 3, '已接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (46, 3, 4, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (47, 3, 5, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (48, 3, 6, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (49, 3, 7, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (50, 3, 8, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (51, 3, 9, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (52, 3, 10, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (53, 3, 11, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (54, 3, 12, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (55, 3, 13, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (56, 3, 14, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (57, 3, 15, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (58, 3, 16, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (59, 3, 17, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (60, 3, 18, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (61, 3, 19, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (62, 3, 20, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (63, 3, 21, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (64, 4, 1, '已接種', '臺大醫院', '2018-10-31');
-INSERT INTO `t07vaccine` VALUES (65, 4, 2, '已接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (66, 4, 3, '已接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (67, 4, 4, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (68, 4, 5, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (69, 4, 6, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (70, 4, 7, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (71, 4, 8, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (72, 4, 9, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (73, 4, 10, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (74, 4, 11, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (75, 4, 12, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (76, 4, 13, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (77, 4, 14, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (78, 4, 15, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (79, 4, 16, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (80, 4, 17, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (81, 4, 18, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (82, 4, 19, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (83, 4, 20, '未接種', '', NULL);
-INSERT INTO `t07vaccine` VALUES (84, 4, 21, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (1, 1, 1, '已接種', '馬偕醫院', '2018-09-26');
+INSERT INTO `T07vaccination` VALUES (2, 1, 2, '已接種', '馬偕醫院', '2018-10-26');
+INSERT INTO `T07vaccination` VALUES (3, 1, 3, '已接種', '臺大醫院', '2018-10-27');
+INSERT INTO `T07vaccination` VALUES (4, 1, 4, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (5, 1, 5, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (6, 1, 6, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (7, 1, 7, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (8, 1, 8, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (9, 1, 9, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (10, 1, 10, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (11, 1, 11, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (12, 1, 12, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (13, 1, 13, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (14, 1, 14, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (15, 1, 15, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (16, 1, 16, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (17, 1, 17, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (18, 1, 18, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (19, 1, 19, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (20, 1, 20, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (21, 1, 21, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (22, 2, 1, '已接種', '榮總醫院', '2018-09-27');
+INSERT INTO `T07vaccination` VALUES (23, 2, 2, '已接種', '榮總醫院', '2018-10-27');
+INSERT INTO `T07vaccination` VALUES (24, 2, 3, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (25, 2, 4, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (26, 2, 5, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (27, 2, 6, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (28, 2, 7, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (29, 2, 8, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (30, 2, 9, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (31, 2, 10, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (32, 2, 11, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (33, 2, 12, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (34, 2, 13, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (35, 2, 14, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (36, 2, 15, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (37, 2, 16, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (38, 2, 17, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (39, 2, 18, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (40, 2, 19, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (41, 2, 20, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (42, 2, 21, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (43, 3, 1, '已接種', '榮總醫院', '2018-10-30');
+INSERT INTO `T07vaccination` VALUES (44, 3, 2, '已接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (45, 3, 3, '已接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (46, 3, 4, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (47, 3, 5, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (48, 3, 6, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (49, 3, 7, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (50, 3, 8, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (51, 3, 9, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (52, 3, 10, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (53, 3, 11, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (54, 3, 12, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (55, 3, 13, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (56, 3, 14, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (57, 3, 15, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (58, 3, 16, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (59, 3, 17, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (60, 3, 18, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (61, 3, 19, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (62, 3, 20, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (63, 3, 21, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (64, 4, 1, '已接種', '臺大醫院', '2018-10-31');
+INSERT INTO `T07vaccination` VALUES (65, 4, 2, '已接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (66, 4, 3, '已接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (67, 4, 4, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (68, 4, 5, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (69, 4, 6, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (70, 4, 7, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (71, 4, 8, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (72, 4, 9, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (73, 4, 10, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (74, 4, 11, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (75, 4, 12, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (76, 4, 13, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (77, 4, 14, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (78, 4, 15, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (79, 4, 16, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (80, 4, 17, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (81, 4, 18, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (82, 4, 19, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (83, 4, 20, '未接種', '', NULL);
+INSERT INTO `T07vaccination` VALUES (84, 4, 21, '未接種', '', NULL);
 
 -- ----------------------------
 -- Table structure for t08diary
@@ -411,10 +411,10 @@ INSERT INTO `t08diary` VALUES (4, 3, '10456023@ntub.edu.tw', '2018-10-31', '乖�
 INSERT INTO `t08diary` VALUES (5, 1, '10456004@ntub.edu.tw', '2018-10-31', '寶寶發出像爸爸的聲音。', NULL);
 
 -- ----------------------------
--- Table structure for t09milestonedone
+-- Table structure for t09milestone_Done
 -- ----------------------------
-DROP TABLE IF EXISTS `t09milestonedone`;
-CREATE TABLE `t09milestonedone`  (
+DROP TABLE IF EXISTS `t09milestone_Done`;
+CREATE TABLE `t09milestone_Done`  (
   `serNo` int(50) NOT NULL AUTO_INCREMENT COMMENT 'AI',
   `babyNo` int(50) NOT NULL COMMENT 'T02',
   `msNo` int(50) NOT NULL COMMENT 'T14',
@@ -423,50 +423,50 @@ CREATE TABLE `t09milestonedone`  (
   PRIMARY KEY (`serNo`) USING BTREE,
   INDEX `babyNo`(`babyNo`) USING BTREE,
   INDEX `babyNo_2`(`babyNo`) USING BTREE,
-  INDEX `t09milestonedone_ibfk_1`(`msNo`) USING BTREE,
-  CONSTRAINT `t09milestonedone_ibfk_1` FOREIGN KEY (`msNo`) REFERENCES `t14 milestone` (`msno`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `t09milestonedone_ibfk_2` FOREIGN KEY (`babyNo`) REFERENCES `t02baby` (`babyno`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `t09milestone_Done_ibfk_1`(`msNo`) USING BTREE,
+  CONSTRAINT `t09milestone_Done_ibfk_1` FOREIGN KEY (`msNo`) REFERENCES `t14milestone` (`msno`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `t09milestone_Done_ibfk_2` FOREIGN KEY (`babyNo`) REFERENCES `t02baby` (`babyno`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of t09milestonedone
+-- Records of t09milestone_Done
 -- ----------------------------
-INSERT INTO `t09milestonedone` VALUES (1, 1, 1, '達成', '2018-10-10');
-INSERT INTO `t09milestonedone` VALUES (2, 1, 2, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (3, 1, 3, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (4, 1, 4, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (5, 1, 5, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (6, 1, 6, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (7, 1, 7, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (8, 1, 8, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (9, 1, 9, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (10, 2, 1, '達成', '2018-10-17');
-INSERT INTO `t09milestonedone` VALUES (11, 2, 2, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (12, 2, 3, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (13, 2, 4, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (14, 2, 5, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (15, 2, 6, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (16, 2, 7, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (17, 2, 8, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (18, 2, 9, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (19, 3, 1, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (20, 3, 2, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (21, 3, 3, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (22, 3, 4, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (23, 3, 5, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (24, 3, 6, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (25, 3, 7, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (26, 3, 8, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (27, 3, 9, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (28, 4, 1, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (29, 4, 2, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (30, 4, 3, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (31, 4, 4, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (32, 4, 5, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (33, 4, 6, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (34, 4, 7, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (35, 4, 8, '未達成', NULL);
-INSERT INTO `t09milestonedone` VALUES (36, 4, 9, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (1, 1, 1, '達成', '2018-10-10');
+INSERT INTO `t09milestone_Done` VALUES (2, 1, 2, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (3, 1, 3, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (4, 1, 4, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (5, 1, 5, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (6, 1, 6, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (7, 1, 7, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (8, 1, 8, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (9, 1, 9, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (10, 2, 1, '達成', '2018-10-17');
+INSERT INTO `t09milestone_Done` VALUES (11, 2, 2, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (12, 2, 3, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (13, 2, 4, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (14, 2, 5, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (15, 2, 6, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (16, 2, 7, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (17, 2, 8, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (18, 2, 9, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (19, 3, 1, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (20, 3, 2, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (21, 3, 3, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (22, 3, 4, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (23, 3, 5, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (24, 3, 6, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (25, 3, 7, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (26, 3, 8, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (27, 3, 9, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (28, 4, 1, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (29, 4, 2, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (30, 4, 3, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (31, 4, 4, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (32, 4, 5, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (33, 4, 6, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (34, 4, 7, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (35, 4, 8, '未達成', NULL);
+INSERT INTO `t09milestone_Done` VALUES (36, 4, 9, '未達成', NULL);
 
 -- ----------------------------
 -- Table structure for t10education
@@ -492,38 +492,38 @@ INSERT INTO `t10education` VALUES (3, 'V0124', '孩子的事交給他自己來�
 INSERT INTO `t10education` VALUES (4, 'L0816', '教育子女，怎樣才是最好的方法？', '在教育兒子的時候，我不會去管那些概念的東西。兒子七歲時，學校老師給他佈置了很多作業，他就對我說，爸爸，我不想寫這些家庭作業。我問他為什麼，他說，這些字我都會寫，但老師還要我們寫上二三十遍，純粹是浪費生命嘛，我還不如讀書。於是，我就給老師打電話，叫他不要給我的兒子佈置家庭作業。我的兒子很自覺，不做作業的時候，就會讀一些童話之類的書。初中的時候也是這樣，他又不想做學校作業了，想讀書，於是我又給老師打電話。高中的時候還是這樣，學校要求上晚自習，但他不想去，因為覺得晚自習非常愚蠢，我問他為什麼，他說，一起參加晚自習的人都非常愚昧，我還不如一個人讀讀書。於是，我又給學校打電話，叫他們別再要求我兒子去上晚自習了。我不是在放縱我的兒子，而是尊重他的選擇，教育他要為自己的人生做選擇，要自己去承擔選擇的結果。我的兒子提出這些要求，也不是在為自己的懶惰找理由，而是因為他選擇了另外一種生活方式。兒子高一那年，他每天早晨三點起床，六點去上學，中間的三個小時做什麼呢？他在寫一部長篇小說，小說中描述了人類尋找永恆時面臨的許多困境，他寫得非常好。就這樣一直寫到高二的時候，他突然提出要退學。我問他為什麼，他說，我要當作家，寫作太快樂了。於是我再次支持了他的選擇，我不但在他的退學申請上簽了字，還在上面寫了這樣一段話：我兒子決定退學，去實現他當作家的夢想，希望你們批准。後來學校批准了他的申請，他就退學了。還有一次，我看到他寫給女朋友的情書，上面寫著：親愛的，我將來要帶你去富士山下看櫻花。我說，好兒子，真有自信啊，你不僅要填飽你自己的肚子，還要帶老婆去看櫻花，有這樣的理想，我祝福你。那時他才讀初二，但是我沒有訓斥他，更沒有阻止他，而是讓他把女朋友帶來，我請她吃飯。後來，有個朋友告訴我，你兒子在談戀愛。我就對那朋友說，孩子長大了就是要談戀愛的，如果他不想談戀愛的話，我還得帶他去看醫生，因為不知道他是不是有病。朋友問我，你不怕出事嗎？我說，能出什麼事，最大的事情不過就是給我生個孫子嘛，生不了孫子的話將來也很糟糕，我又得帶他去看病。當然，我只是舉一個例子，他們現在還沒結婚，也沒給我生孫子。所以說，我從來不把自己的價值體系強加給孩子，看起來我很放縱他，但是他非常優秀。後來，他還在我的家鄉搞了一個文學院，教孩子們如何寫作，非常成功，在當地的影響很大，家喻戶曉，一年有幾十萬的收入。後來我到了廣州，就告訴兒子，你這輩子不是來教作文的，你還有更重要的事情要去做，能不能來這裡，跟我一塊兒實現你的夢想，一起做些事情呢？他聽了我的這番話，就毅然解散了自己的文學院，放棄了一年幾十萬的收入，帶著女朋友來到廣州，每天接受我的監督。我告訴大家，每天早晨五點之前，我兒子都必鬚髮短信給我，內容是：“自強不息，天道酬勤。”等於向我報到。每天我會獎勵他十元的起床補助。如果他不發短信的話，我就要一天扣他十塊錢的零花錢。他放棄了每年幾十萬的收入，來到廣州，為了什麼？為了實現他的夢想。我從小就告訴他：孩子，你做什麼都行，只要有一顆乾淨的心，你就是成功的，你就是我的兒子；如果沒有一顆乾淨的心，沒有完善的人格，你就不配做我的兒子。我的價值體系跟流行價值體係不一樣，我心中的價值與成功，就是做一個合格的人，做一個好人，做一個不被流行的社會價值體系所局限的好人。我永遠都不會把自己實現不了的夢想強加給孩子，逼著他為我的夢想奉獻一生。但是，現在好多家長都不是這樣。好多人自己當不了官，卻想讓孩子當總統；自己成不了科學家，卻想讓孩子當科學家；自己沒本事掙錢，卻想讓孩子當比爾•蓋茨。不要這樣對你的孩子。孩子不是家長的附屬品，不要認為你給了他生命，就有了支配他的權力，他就有了被支配的責任。不是這樣的。在每個人的生命當中，最珍貴的就是他的快樂、明白、健康、生命。你是這樣，你的孩子也是這樣。你不知道自己能在這個世界上存在多久，不知道孩子能在這個世界上存在多久，也不知道親人能在這個世界上存在多久，所以，存在的時候，你就要好好地愛他們，不要讓那些亂七八糟的東西把你的心干擾了，要放下一切。在這個世界上，只要活著，最重要的事情就是快樂和愛，此外再沒有什麼別的東西。\r\n我有一個學生，從小就被父親逼著學這個學那個，而且父親老是揍她，給了她一個不愉快的童年。這個父親根本就不知道，自己的女兒二十多歲就會得絕症。陳亦新說：“如果她的父親知道自己的孩子二十多歲就會得絕症，當時肯定不會打她的，怎麼捨得打她呢？”是的。我們怎麼知道親人甚麼時候會離開自己呢？所以，能夠自主生命的時候，親人還在身邊的時候，我們就要好好地去愛，讓他們快樂、輕鬆、自在地活著，讓他們擁有自己的夢想，幫助他們實現自己的夢想。現在，我告訴我的兒子，你去實現你的夢想吧，我有工資，有稿費，肯定能讓你有尊嚴地活著，直到你實現自己的夢想。實現了夢想，你就是我的好兒子；實現不了，你也是我的好兒子，只要你能自強不息。\r\n我們追求的東西，無論多麼輝煌，都只是一點記憶，為了這點可憐的、很快就會被遺忘的記憶，折磨自己的孩子，折磨自己的親人，不值得。所以，我們要悲憫地、明白地活著，要看破這種留不住的虛幻，享受生命的每一個當下，不要去管能不能改變別人，首先要改變自己，做個快樂的明白人。\r\n一定要明白，佛教的真理不是為了叫我們來度世界的，它只能度你自己。但是，當我們每個人都能從煩惱與束縛中解脫出來的時候，世界也就被拯救了。因為，世界正是由一個又一個的人所組成的。\r\n佛法主張通過拯救自己來拯救世界，通過救心來救世，而西方文化則大多依靠征服世界來滿足自己的慾望，包括西方的英雄教育也是這樣，它們都把快樂和解脫的希望寄託在外部世界的改變上。外部世界的改變，真的能帶給一個人幸福的生活嗎？不能。人類的慾望，就像用海水解渴一樣，越去滿足，就越不滿足。好多時候都是這樣。所以說，如果大手印文化能滲透到人們的生活當中，變成人們的生活理念，讓人們都去善待身邊的人，我的寫作、說話就有了意義。如果做不到這一點的話，我不管寫出多麼暢銷的東西，獲得多少掌聲和多高的聲譽，都沒有任何意義。', 'http://ezvivi2.com/article/266567.asp');
 
 -- ----------------------------
--- Table structure for t11forumlike
+-- Table structure for t11forum_Like
 -- ----------------------------
-DROP TABLE IF EXISTS `t11forumlike`;
-CREATE TABLE `t11forumlike`  (
+DROP TABLE IF EXISTS `t11forum_Like`;
+CREATE TABLE `t11forum_Like`  (
   `serNo` int(50) NOT NULL AUTO_INCREMENT COMMENT 'AI',
   `id` char(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'T01',
   `forumNo` int(50) NOT NULL COMMENT 'T04',
   PRIMARY KEY (`serNo`) USING BTREE,
   INDEX `memNo`(`id`) USING BTREE,
-  INDEX `t11forumlike_ibfk_1`(`forumNo`) USING BTREE,
-  CONSTRAINT `t11forumlike_ibfk_1` FOREIGN KEY (`forumNo`) REFERENCES `t04forum` (`forumno`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `t11forumlike_ibfk_2` FOREIGN KEY (`id`) REFERENCES `t01member` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  INDEX `t11forum_Like_ibfk_1`(`forumNo`) USING BTREE,
+  CONSTRAINT `t11forum_Like_ibfk_1` FOREIGN KEY (`forumNo`) REFERENCES `t04forum` (`forumno`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `t11forum_Like_ibfk_2` FOREIGN KEY (`id`) REFERENCES `t01member` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of t11forumlike
+-- Records of t11forum_Like
 -- ----------------------------
-INSERT INTO `t11forumlike` VALUES (1, '10456004@ntub.edu.tw', 3);
-INSERT INTO `t11forumlike` VALUES (2, '10456005@ntub.edu.tw', 4);
-INSERT INTO `t11forumlike` VALUES (3, '10456023@ntub.edu.tw', 3);
-INSERT INTO `t11forumlike` VALUES (4, '10456048@ntub.edu.tw', 2);
-INSERT INTO `t11forumlike` VALUES (5, '10456004@ntub.edu.tw', 3);
-INSERT INTO `t11forumlike` VALUES (6, '10456005@ntub.edu.tw', 1);
-INSERT INTO `t11forumlike` VALUES (7, '10456004@ntub.edu.tw', 1);
-INSERT INTO `t11forumlike` VALUES (8, '10456005@ntub.edu.tw', 4);
-INSERT INTO `t11forumlike` VALUES (9, '10456004@ntub.edu.tw', 3);
-INSERT INTO `t11forumlike` VALUES (10, '10456005@ntub.edu.tw', 2);
-INSERT INTO `t11forumlike` VALUES (11, '10456023@ntub.edu.tw', 2);
-INSERT INTO `t11forumlike` VALUES (12, '10456048@ntub.edu.tw', 3);
-INSERT INTO `t11forumlike` VALUES (13, '10456005@ntub.edu.tw', 1);
-INSERT INTO `t11forumlike` VALUES (14, '10456023@ntub.edu.tw', 3);
-INSERT INTO `t11forumlike` VALUES (15, '10456048@ntub.edu.tw', 2);
+INSERT INTO `t11forum_Like` VALUES (1, '10456004@ntub.edu.tw', 3);
+INSERT INTO `t11forum_Like` VALUES (2, '10456005@ntub.edu.tw', 4);
+INSERT INTO `t11forum_Like` VALUES (3, '10456023@ntub.edu.tw', 3);
+INSERT INTO `t11forum_Like` VALUES (4, '10456048@ntub.edu.tw', 2);
+INSERT INTO `t11forum_Like` VALUES (5, '10456004@ntub.edu.tw', 3);
+INSERT INTO `t11forum_Like` VALUES (6, '10456005@ntub.edu.tw', 1);
+INSERT INTO `t11forum_Like` VALUES (7, '10456004@ntub.edu.tw', 1);
+INSERT INTO `t11forum_Like` VALUES (8, '10456005@ntub.edu.tw', 4);
+INSERT INTO `t11forum_Like` VALUES (9, '10456004@ntub.edu.tw', 3);
+INSERT INTO `t11forum_Like` VALUES (10, '10456005@ntub.edu.tw', 2);
+INSERT INTO `t11forum_Like` VALUES (11, '10456023@ntub.edu.tw', 2);
+INSERT INTO `t11forum_Like` VALUES (12, '10456048@ntub.edu.tw', 3);
+INSERT INTO `t11forum_Like` VALUES (13, '10456005@ntub.edu.tw', 1);
+INSERT INTO `t11forum_Like` VALUES (14, '10456023@ntub.edu.tw', 3);
+INSERT INTO `t11forum_Like` VALUES (15, '10456048@ntub.edu.tw', 2);
 
 -- ----------------------------
 -- Table structure for t12manager
@@ -639,10 +639,10 @@ INSERT INTO `t13vaccine` VALUES (20, 'V0124', '日本腦炎疫苗(一劑)', 1825
 INSERT INTO `t13vaccine` VALUES (21, 'J0903', '白喉破傷風非細胞性百日咳及不活化小兒麻痺混合疫苗(一劑)', 1825, '接種部位可能有紅腫、疼痛現象，偶爾有食慾不振、嘔吐、發燒等症狀。上述反應，通常都是短暫的，會在數日內恢復，請勿揉、抓注射部位。');
 
 -- ----------------------------
--- Table structure for t14 milestone
+-- Table structure for t14milestone
 -- ----------------------------
-DROP TABLE IF EXISTS `t14 milestone`;
-CREATE TABLE `t14 milestone`  (
+DROP TABLE IF EXISTS `t14milestone`;
+CREATE TABLE `t14milestone`  (
   `msNo` int(50) NOT NULL AUTO_INCREMENT COMMENT 'AI',
   `managerNo` char(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'T12',
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -656,27 +656,27 @@ CREATE TABLE `t14 milestone`  (
   INDEX `msNo_4`(`msNo`) USING BTREE,
   INDEX `msNo_5`(`msNo`) USING BTREE,
   INDEX `msNo_6`(`msNo`) USING BTREE,
-  CONSTRAINT `t14 milestone_ibfk_1` FOREIGN KEY (`managerNo`) REFERENCES `t12manager` (`managerno`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `t14milestone_ibfk_1` FOREIGN KEY (`managerNo`) REFERENCES `t12manager` (`managerno`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of t14 milestone
+-- Records of t14milestone
 -- ----------------------------
-INSERT INTO `t14 milestone` VALUES (1, 'H1022', '反射應抓握', '一碰觸手掌心就會抓住', NULL);
-INSERT INTO `t14 milestone` VALUES (2, 'V0124', '翻身', '不須靠外力即可翻身', NULL);
-INSERT INTO `t14 milestone` VALUES (3, 'V0124', '玩躲貓貓', '蓋手帕在寶寶臉上，寶寶會用手抓開', NULL);
-INSERT INTO `t14 milestone` VALUES (4, 'H1022', '爬行', '可從床頭爬到床尾', NULL);
-INSERT INTO `t14 milestone` VALUES (5, 'J0903', '坐姿', '可坐穩不會倒下', NULL);
-INSERT INTO `t14 milestone` VALUES (6, 'L0816', '認識媽媽', '可清楚判斷媽媽是哪一位', NULL);
-INSERT INTO `t14 milestone` VALUES (7, 'L0816', '吃副食品', '已經長牙開始吃副食品', NULL);
-INSERT INTO `t14 milestone` VALUES (8, 'J0903', '丟玩具', '喜歡拿到東西就亂丟', NULL);
-INSERT INTO `t14 milestone` VALUES (9, 'J0903', '長牙', '長出第一顆牙', NULL);
+INSERT INTO `t14milestone` VALUES (1, 'H1022', '反射應抓握', '一碰觸手掌心就會抓住', NULL);
+INSERT INTO `t14milestone` VALUES (2, 'V0124', '翻身', '不須靠外力即可翻身', NULL);
+INSERT INTO `t14milestone` VALUES (3, 'V0124', '玩躲貓貓', '蓋手帕在寶寶臉上，寶寶會用手抓開', NULL);
+INSERT INTO `t14milestone` VALUES (4, 'H1022', '爬行', '可從床頭爬到床尾', NULL);
+INSERT INTO `t14milestone` VALUES (5, 'J0903', '坐姿', '可坐穩不會倒下', NULL);
+INSERT INTO `t14milestone` VALUES (6, 'L0816', '認識媽媽', '可清楚判斷媽媽是哪一位', NULL);
+INSERT INTO `t14milestone` VALUES (7, 'L0816', '吃副食品', '已經長牙開始吃副食品', NULL);
+INSERT INTO `t14milestone` VALUES (8, 'J0903', '丟玩具', '喜歡拿到東西就亂丟', NULL);
+INSERT INTO `t14milestone` VALUES (9, 'J0903', '長牙', '長出第一顆牙', NULL);
 
 -- ----------------------------
--- Table structure for t15forumType
+-- Table structure for t15forum_Type
 -- ----------------------------
-DROP TABLE IF EXISTS `t15forumType`;
-CREATE TABLE `t15forumType`  (
+DROP TABLE IF EXISTS `t15forum_Type`;
+CREATE TABLE `t15forum_Type`  (
   `typeNo` int(50) NOT NULL AUTO_INCREMENT COMMENT 'AI',
   `managerNo` char(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL COMMENT 'T12',
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -691,21 +691,21 @@ CREATE TABLE `t15forumType`  (
   INDEX `typeNo_7`(`typeNo`) USING BTREE,
   INDEX `typeNo_8`(`typeNo`) USING BTREE,
   INDEX `typeNo_9`(`typeNo`) USING BTREE,
-  CONSTRAINT `t15forumType_ibfk_1` FOREIGN KEY (`managerNo`) REFERENCES `t12manager` (`managerno`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `t15forum_Type_ibfk_1` FOREIGN KEY (`managerNo`) REFERENCES `t12manager` (`managerno`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of t15forumType
+-- Records of t15forum_Type
 -- ----------------------------
-INSERT INTO `t15forumType` VALUES (1, 'J0903', '新生兒(0-3歲)');
-INSERT INTO `t15forumType` VALUES (2, 'H1022', '幼兒(3-6歲)');
-INSERT INTO `t15forumType` VALUES (3, 'V0124', '特殊疾病照護');
-INSERT INTO `t15forumType` VALUES (4, 'L0816', '二手嬰兒用品');
-INSERT INTO `t15forumType` VALUES (5, 'V0124', '睡前故事');
-INSERT INTO `t15forumType` VALUES (6, 'J0903', '男孩');
-INSERT INTO `t15forumType` VALUES (7, 'H1022', '女孩');
-INSERT INTO `t15forumType` VALUES (8, 'J0903', '雙胞胎');
-INSERT INTO `t15forumType` VALUES (9, 'H1022', '新手媽媽');
-INSERT INTO `t15forumType` VALUES (10, 'V0124', '懷孕中');
+INSERT INTO `t15forum_Type` VALUES (1, 'J0903', '新生兒(0-3歲)');
+INSERT INTO `t15forum_Type` VALUES (2, 'H1022', '幼兒(3-6歲)');
+INSERT INTO `t15forum_Type` VALUES (3, 'V0124', '特殊疾病照護');
+INSERT INTO `t15forum_Type` VALUES (4, 'L0816', '二手嬰兒用品');
+INSERT INTO `t15forum_Type` VALUES (5, 'V0124', '睡前故事');
+INSERT INTO `t15forum_Type` VALUES (6, 'J0903', '男孩');
+INSERT INTO `t15forum_Type` VALUES (7, 'H1022', '女孩');
+INSERT INTO `t15forum_Type` VALUES (8, 'J0903', '雙胞胎');
+INSERT INTO `t15forum_Type` VALUES (9, 'H1022', '新手媽媽');
+INSERT INTO `t15forum_Type` VALUES (10, 'V0124', '懷孕中');
 
 SET FOREIGN_KEY_CHECKS = 1;
