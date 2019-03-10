@@ -709,3 +709,17 @@ INSERT INTO `t15forum_Type` VALUES (9, 'H1022', '新手媽媽');
 INSERT INTO `t15forum_Type` VALUES (10, 'V0124', '懷孕中');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- Table structure for `t16hospital`
+-- ----------------------------
+DROP TABLE IF EXISTS `t16hospital`;
+CREATE TABLE `t16hospital` (
+  `hospitalNo` int(50) NOT NULL AUTO_INCREMENT,
+  `name` char(20) NOT NULL,
+  `longitude` float(20,0) NOT NULL,
+  `latitude` float(20,0) NOT NULL,
+  `address` char(50) NOT NULL,
+  `phone` char(10) NOT NULL,
+  PRIMARY KEY (`hospitalNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
